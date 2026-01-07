@@ -1,0 +1,3 @@
+BARON OS – PHASE 0
+Scope: Governance & Enforcement ONLY
+No ERP. No API. No UI. No Events Emit. No non-canonical tables.
