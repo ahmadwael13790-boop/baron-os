@@ -1,0 +1,15 @@
+name: Schema Authority Gate
+
+on: [pull_request]
+
+jobs:
+  schema-authority:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Block unauthorized SQL
+        run: |
+          if ls governance/sql/*.sql | grep -vE '001_schema_contracts.sql|002_governance_rules.sql|003_governance_violations.sql|004_api_contracts.sql|005_feature_certificates.sql|006_architecture_decisions.sql' >/dev/null 2>&1; then
+            echo "Unauthorized SQL detected"
+            exit 1
+          fi

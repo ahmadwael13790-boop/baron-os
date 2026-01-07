@@ -1,0 +1,15 @@
+name: API Contract Gate
+
+on: [pull_request]
+
+jobs:
+  api-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Block API routes without contract
+        run: |
+          if ls api/routers 2>/dev/null; then
+            echo "API routes detected in Phase 0"
+            exit 1
+          fi

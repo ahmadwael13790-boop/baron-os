@@ -1,0 +1,15 @@
+name: Phase Intent Gate
+
+on: [pull_request]
+
+jobs:
+  phase-intent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enforce Phase Intent
+        run: |
+          if [ ! -f docs/phase_intent/PHASE_0.md ]; then
+            echo "Missing Phase Intent"
+            exit 1
+          fi

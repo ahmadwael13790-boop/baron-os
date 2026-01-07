@@ -1,0 +1,15 @@
+name: Feature Certificate Gate
+
+on: [pull_request]
+
+jobs:
+  feature-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Block feature code without certificate
+        run: |
+          if grep -R "feature_" -n . | grep -v governance/sql >/dev/null 2>&1; then
+            echo "Feature reference without certificate"
+            exit 1
+          fi
