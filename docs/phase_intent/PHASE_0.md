@@ -8,4 +8,4 @@ FORBIDDEN:
 - Any ERP tables
 - Any business logic
 - Any executable API or UI
-STATUS: IN_PROGRESS
+STATUS: FINAL_LOCK
